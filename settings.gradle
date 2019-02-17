@@ -1,1 +1,1 @@
-include ':app', ':localsercvicedemo', ':broadcastreceiverdemo', ':myapplication'
+include ':app', ':localsercvicedemo', ':broadcastreceiverdemo', ':myapplication', ':contentproviderdemoone'

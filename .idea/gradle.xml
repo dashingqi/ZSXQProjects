@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/broadcastreceiverdemo" />
+            <option value="$PROJECT_DIR$/contentproviderdemoone" />
             <option value="$PROJECT_DIR$/localsercvicedemo" />
             <option value="$PROJECT_DIR$/myapplication" />
           </set>
