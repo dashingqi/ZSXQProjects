@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void sendBroadcastReceive() {
         Log.i(TAG, "sendBroadcastReceive: ");
-        Intent intent = new Intent("com.example.broadcastreceiverdemo.TEST");
-        sendBroadcast(intent);
+        Intent intent = new Intent("com.example.broadcastreceiverdemo.MY_BROADCAST");
+        this.sendBroadcast(intent);
     }
 
     /**
@@ -80,7 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void sendLocalBroadcastReceive() {
         Intent intent = new Intent();
         intent.setAction("com.example.broadcastreceiverdemo.LOCAL_BROAD");
-        sendBroadcast(intent);
+        //必须的是LocalBroadcastManage调用sendBroadcast()方法
+        localBroadcastManager.sendBroadcast(intent);
     }
 
     @Override

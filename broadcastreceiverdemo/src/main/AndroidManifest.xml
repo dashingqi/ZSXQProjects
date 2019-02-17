@@ -25,7 +25,7 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.example.broadcastreceiverdemo.TEST" />
+                <action android:name="com.example.broadcastreceiverdemo.MY_BROADCAST" />
             </intent-filter>
         </receiver>
 

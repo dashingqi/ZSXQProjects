@@ -9,7 +9,7 @@ import android.util.Log;
 
 /**
  *
- * //面试题
+ *
  * 1. Service的生命周期
  *   # onCreate onStartCommand  onBind  onDestroy
  *   # 其中 onCreate是服务第一次创建的时候会调用，当通过startService()来再次开启服务的时候，会调用onStartCommand()方法的；当通过bindService()开启服务的时候 onBind只会在第一次创建
@@ -24,7 +24,7 @@ import android.util.Log;
  * 4. Service与IntentService的区别
  *  普通服务的缺点
  *      1. 如果要在服务中做耗时的操作，必须得自己开启一个子线程，来处理耗时的操作
- *      2. startService的服务 开启了，如果没有手动调用StopService 或者stopSelf 那么就会一直运行
+ *      2. startService()开启的服务，如果没有手动调用StopService 或者stopSelf 那么就会一直运行
  *  IntentService相比较与Service的优点
  *      1. 开启IntentService 就会自动开启一个work线程来处理Intent请求
  *      2. 所有Intent请求处理完成后，IntentService会自动停止，不需要调用stopSelf
