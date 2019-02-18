@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startIntentService();
                 break;
             case R.id.btnBindIntentService:
-                bindIntentSerrvice();
+                bindIntentService();
                 break;
             case R.id.btnStopService:
                 stopService(new Intent(MainActivity.this, MyService.class));
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 1.首次绑定 执行的方法有 onCreate  onBind onServiceConnected
      * 2. 再次去绑定 仅仅执行 onServiceConnected方法
      * 3. 调用者挂了，服务也会跟着挂，这种方式下，绑定者可以调用服务里面的方法
-     * 4. BIND_AUTO_CREATE ： 表示活动和服务进行绑定后自动创建服务，这样服务的onStart方法就会执行，onStartCommand就不会执行了。
+     * 4. BIND_AUTO_CREATE ： 表示活动和服务进行绑定后自动创建服务，这样服务的onBind方法就会执行，onStartCommand就不会执行了。
      * 5. 首次绑定服务会执行onCreate() 再次去启动服务只会执行onServiceConnected(ServiceConnected中的一个抽象方法)
      * 6. 如果一个服务调用了startService和bindService 如果要停止这个服务 必须得调用 stopService和unbindService
      */
@@ -97,8 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 当调用bindService方法进行绑定IntentService
      * 1. 不会调用onHandleIntent ，就不会自己开启工作线程和自动结束 需要调用方法unbindService()来结束。
      */
-    private void bindIntentSerrvice() {
-        Log.i(TAG, "bindIntentSerrvice: " + Thread.currentThread().getId());
+    private void bindIntentService() {
+        Log.i(TAG, "bindIntentService: " + Thread.currentThread().getId());
         MyBindIntentServiceConnection myBindIntentServiceConnection = new MyBindIntentServiceConnection();
         bindService(new Intent(MainActivity.this, MyBindIntentService.class), myBindIntentServiceConnection, BIND_AUTO_CREATE);
     }

@@ -13,5 +13,39 @@
         android:layout_height="wrap_content"
         android:text="read contact"
         />
+    <Button
+        android:id="@+id/btnCreateBookTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="book table"
+        />
+    <Button
+        android:id="@+id/btnAddData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add data"
+        />
+
+    <Button
+        android:id="@+id/btnUpdateData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="update data"
+        />
+
+    <Button
+        android:id="@+id/btnDeleteData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="delete data"
+        />
+
+    <Button
+        android:id="@+id/btnQueryData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="query data"
+        />
+
 
 </LinearLayout>

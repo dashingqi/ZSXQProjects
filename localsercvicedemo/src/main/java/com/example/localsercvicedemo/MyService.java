@@ -28,7 +28,7 @@ import android.util.Log;
  *  IntentService相比较与Service的优点
  *      1. 开启IntentService 就会自动开启一个work线程来处理Intent请求
  *      2. 所有Intent请求处理完成后，IntentService会自动停止，不需要调用stopSelf
- *      3. 为onBind提供默认的显示，默认返回null
+ *      3. 为onBind提供默认的实现，默认返回null
  *      4. 为onStartCommand提供默认的实现，将请求的Intent添加到队列中。
  */
 public class MyService extends Service {
