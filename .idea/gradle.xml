@@ -8,11 +8,15 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/activitydemo" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/broadcastreceiverdemo" />
             <option value="$PROJECT_DIR$/contentproviderdemoone" />
             <option value="$PROJECT_DIR$/localsercvicedemo" />
             <option value="$PROJECT_DIR$/myapplication" />
+            <option value="$PROJECT_DIR$/mycustomview" />
+            <option value="$PROJECT_DIR$/shapeandselectordemo" />
+            <option value="$PROJECT_DIR$/tablelayout" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

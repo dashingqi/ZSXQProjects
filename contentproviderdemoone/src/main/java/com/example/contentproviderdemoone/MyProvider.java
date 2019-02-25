@@ -18,6 +18,22 @@ import android.support.annotation.Nullable;
  * @UpdateDate: 2019/2/17 11:01 PM
  * @UpdateRemark:
  * @Version: 1.0
+ *
+ * 1. ContentProvider ContentResolver ContentObserver
+ *
+ * ContentProvider:
+ *      1.Android中四大组件之一，叫做内容提供者；主要对外提供数据
+ *      2.实现应用程序之间数据的共享（跨应用），比如手机联系人的应用，使用了它。其实真正的数据源是文件或者SQLite，ContentProvider只是个中间人。
+ *      3.对外共享数据，你可以把应用内的数据通过ContentProvider来提供给其他应用，其他应用也可以通过ContentProvider来对你应用内的数据进行CRUD操作。
+ *  ContentResolver：
+ *      1.内容解析者，用来操作内容提供者提供的数据。
+ *      2.解析Uri：ContentResolver.notifyChange(uri)
+ *  ContentObserver：
+ *      1.内容监听器，监听数据的改变状态。
+ *      2.主要监听Uri引起的数据变化，继而做一些处理。
+ *
+ *   三者的关系是这样的 用ContentResolver来解析ContentProvider提供的数据，同时注册ContentObserver监听Uri引起数据库数据的变化。
+ *
  */
 public class MyProvider extends ContentProvider {
 

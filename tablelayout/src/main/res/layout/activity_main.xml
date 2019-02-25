@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:shrinkColumns="0,1,2"
+    android:stretchColumns="0,1,2"
+    android:collapseColumns="0"
+    >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:text="Button1"
+            />
+        <Button
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:text="Button2"
+            />
+        <Button
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:text="Button3"
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:text="Button4"
+            />
+
+        <Button
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:text="Button5"
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+
+        <Button
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:text="Button6"
+            />
+        <Button
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:text="Button7"
+            />
+        <Button
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:text="Button8"
+            />
+
+    </TableRow>
+
+</TableLayout>

@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnUpdateData;
     private Button btnDeleteData;
     private Button btnQueryData;
+    private Button btnQueryProvider;
+    private Button btnAddDataProvider;
+    private Button btnUpdateProvider;
+    private Button deleteDataProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +85,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnQueryData = findViewById(R.id.btnQueryData);
         btnQueryData.setOnClickListener(this);
+
+        btnQueryProvider = findViewById(R.id.btnQueryProvider);
+        btnQueryProvider.setOnClickListener(this);
+
+        btnAddDataProvider = findViewById(R.id.btnAddDataProvider);
+        btnAddDataProvider.setOnClickListener(this);
+
+        btnUpdateProvider = findViewById(R.id.btnUpdateProvider);
+        btnUpdateProvider.setOnClickListener(this);
+
+        deleteDataProvider = findViewById(R.id.btnDeleteDataProvider);
+        deleteDataProvider.setOnClickListener(this);
     }
 
     @Override
@@ -116,7 +133,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnQueryData:
                 queryData();
                 break;
+            case R.id.btnQueryProvider:
+                queryDataProvider();
+                break;
+            case R.id.btnAddDataProvider:
+                addDataProvider();
+                break;
+            case R.id.btnUpdateProvider:
+                updateProviderData();
+                break;
+            case R.id.btnDeleteDataProvider:
+                deleteDataProviderMethod();
+                break;
 
+        }
+    }
+
+    private void deleteDataProviderMethod() {
+        Uri uri = Uri.parse("content://com.example.dashingqi.provider/book");
+        int delete = getContentResolver().delete(uri, "name = ?", new String[]{"MacBookPro"});
+        Log.i(TAG, "delete = " + delete);
+    }
+
+    /**
+     * 更新数据 provider
+     */
+    private void updateProviderData() {
+        Uri uri = Uri.parse("content://com.example.dashingqi.provider/book");
+        ContentValues values = new ContentValues();
+        values.put("name", "MacBookPro");
+        int update = getContentResolver().update(uri, values, "author = ?", new String[]{"guolin"});
+        Log.i(TAG, "update = " + update);
+
+    }
+
+    /**
+     * 添加数据 provider
+     */
+    private void addDataProvider() {
+        ContentValues values = new ContentValues();
+        values.put("name", "the first code");
+        values.put("author", "guolin");
+        values.put("pages", "300");
+        values.put("price", "45.9");
+        Uri uri = Uri.parse("content://com.example.dashingqi.provider/book");
+        Uri mUri = getContentResolver().insert(uri, values);
+        String id = mUri.getPathSegments().get(1);
+        Log.i(TAG, "id = " + id);
+
+
+    }
+
+    /**
+     * 查询数据
+     */
+    private void queryDataProvider() {
+        Uri uri = Uri.parse("content://com.example.dashingqi.provider/book");
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null, null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(cursor.getColumnIndex("name"));
+                String author = cursor.getString(cursor.getColumnIndex("author"));
+                Log.i(TAG, "name = " + name);
+                Log.i(TAG, "author = " + author);
+
+            }
         }
     }
 
