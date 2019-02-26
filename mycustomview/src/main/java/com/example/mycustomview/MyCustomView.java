@@ -1,6 +1,7 @@
 package com.example.mycustomview;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -22,6 +23,7 @@ import android.view.View;
 public class MyCustomView extends View {
 
     private Paint paint;
+    private int defaultSize;
 
     public MyCustomView(Context context) {
         this(context, null);
@@ -33,6 +35,12 @@ public class MyCustomView extends View {
 
     public MyCustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyCustomView);
+        //如果用户没有指定的情况，就去拿到defValue
+        defaultSize = typedArray.getDimensionPixelSize(R.styleable.MyCustomView_default_size, 100);
+
+        //将对象typedArray回收
+        typedArray.recycle();
         initPaint();
     }
 
@@ -45,8 +53,8 @@ public class MyCustomView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int width = getMySize(100, widthMeasureSpec);
-        int height = getMySize(100, heightMeasureSpec);
+        int width = getMySize(defaultSize, widthMeasureSpec);
+        int height = getMySize(defaultSize, heightMeasureSpec);
         if (width < height)
             height = width;
         else
@@ -76,6 +84,7 @@ public class MyCustomView extends View {
         int size = MeasureSpec.getSize(measureSpec);
         switch (mode) {
             case MeasureSpec.UNSPECIFIED:
+
                 mySize = defaultSize;
                 break;
             case MeasureSpec.AT_MOST:
@@ -84,7 +93,7 @@ public class MyCustomView extends View {
 
                 break;
             case MeasureSpec.EXACTLY:
-                //如果是固定大小，那就不要去改变它  （match_parent ;指定固定的值）
+                //如果是固定大小，那就不要去改变它  （match_parent 或者 指定固定的值）
                 mySize = size;
                 break;
         }
